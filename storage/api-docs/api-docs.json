@@ -1,0 +1,1900 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger with Laravel",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register a new user",
+                "operationId": "15a305cccb0e449b37cf83dd069da62e",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "User name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "User mobile",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User email",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login user",
+                "operationId": "5af4433e29a0b65a26a6dde1e4cd7e46",
+                "parameters": [
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "User Mobile",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User login successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    },
+                    "401": {
+                        "description": "Login information is incorrect"
+                    }
+                }
+            }
+        },
+        "/api/auth/detail": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "detail user login",
+                "operationId": "cb93db4d4a2f32eaa6737a3003c8e541",
+                "responses": {
+                    "200": {
+                        "description": "User detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "user logout",
+                "operationId": "b5e2ebd9118be7f94ef12797bff40bb1",
+                "responses": {
+                    "200": {
+                        "description": "User Logout Successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/index": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "All City",
+                "operationId": "29c76a6a3df7a2a9c1ca730768525725",
+                "responses": {
+                    "200": {
+                        "description": "City detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/store": {
+            "post": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Create a City",
+                "operationId": "1dbe075c8614a4bf4e7115ad56fe794f",
+                "parameters": [
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "Name City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "City detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/show": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "show a City",
+                "operationId": "f43e6b1b26c17f36d2fcf70dabf36a07",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "City detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/edit": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "edit a City",
+                "operationId": "48aa6452fda6b07af65493e256302c81",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "City detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/update": {
+            "put": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Update a City",
+                "operationId": "e6e17b533fa8ae49fd0867bcdcbc86e1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "Name City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "City detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/destroy": {
+            "delete": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Delete a City",
+                "operationId": "6f64ffe979cc6f1531968d3f7661efeb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "City detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/City/restore": {
+            "put": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Restore a City",
+                "operationId": "5555ab8a16d51c16147ddaf2291a9942",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id City",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "City detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/order/Paydone": {
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "detail TrainTicket",
+                "operationId": "b8bcd1e34c98067e957c109d102081aa",
+                "parameters": [
+                    {
+                        "name": "Airplane",
+                        "in": "query",
+                        "description": "id AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "totalPrice",
+                        "in": "query",
+                        "description": "totalPrice Ticket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "type Ticket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "passenger",
+                        "in": "query",
+                        "description": "passenger Ticket",
+                        "required": true,
+                        "schema": {
+                            "type": "json"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Order Create successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/create": {
+            "get": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "Create 30 Fake Data in Passenger",
+                "operationId": "a8d578d74a24af93b35275f9ffef16a7",
+                "responses": {
+                    "200": {
+                        "description": "Create 30 Fake Data in Passenger"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/store": {
+            "post": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "Create a Passenger",
+                "operationId": "95ea0a0313abb1f793238d6bf039491a",
+                "parameters": [
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "description": "firstName Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "description": "lastName Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nationalcode",
+                        "in": "query",
+                        "description": "nationalcode Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "gender Passenger (male,femail)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "birthday",
+                        "in": "query",
+                        "description": "birthday Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "409": {
+                        "description": "TrainTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/show": {
+            "get": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "User Passengers",
+                "operationId": "ea322437a151b91877ba0072053b0e3a",
+                "responses": {
+                    "200": {
+                        "description": "get Passengers User successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/edit": {
+            "get": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "edit a Passenger",
+                "operationId": "d6894fae42581a8f4ca6c98adb97f994",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/update": {
+            "put": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "Update a Passenger",
+                "operationId": "0843b09d4174a93ff943ff1fb4cc95bc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "description": "firstName Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "description": "lastName Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nationalcode",
+                        "in": "query",
+                        "description": "nationalcode Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "gender Passenger (male,femail)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "birthday",
+                        "in": "query",
+                        "description": "birthday Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "409": {
+                        "description": "TrainTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/destroy": {
+            "delete": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "Delete a Passenger",
+                "operationId": "43178b44f79acb77fa193c4570a2d8f1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/restore": {
+            "put": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "Restore a Passenger",
+                "operationId": "13e8568f2fe4b1f473994502b6d7f009",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/passenger/Add": {
+            "post": {
+                "tags": [
+                    "Passenger Ticket"
+                ],
+                "summary": "Create|found Passengers",
+                "operationId": "d066c09f849b16c6e9a253eabb4448d9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "passengers": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "firstName": {
+                                                    "type": "string"
+                                                },
+                                                "lastName": {
+                                                    "type": "string"
+                                                },
+                                                "birthday": {
+                                                    "type": "string",
+                                                    "format": "date"
+                                                },
+                                                "nationalcode": {
+                                                    "type": "string"
+                                                },
+                                                "gender": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "passenger Create|Found successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/AirplaneTicket/index": {
+            "get": {
+                "tags": [
+                    "AirplaneTicket"
+                ],
+                "summary": "All AirplaneTicket",
+                "operationId": "b782676b1f8c42fd0c73f302a67548d0",
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/AirplaneTicket/create": {
+            "get": {
+                "tags": [
+                    "AirplaneTicket"
+                ],
+                "summary": "All AirplaneTicket",
+                "operationId": "00e16d387ade0a3f0e633175b142c7be",
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/AirplaneTicket/store": {
+            "post": {
+                "tags": [
+                    "AirplaneTicket"
+                ],
+                "summary": "Create a AirplaneTicket",
+                "operationId": "fe199d4d1bdcc2cf3c1b5455e589b5c4",
+                "parameters": [
+                    {
+                        "name": "adultPrice",
+                        "in": "query",
+                        "description": "adultPrice AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "arrivalTime",
+                        "in": "query",
+                        "description": "arrivalTime TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arrivalDate",
+                        "in": "query",
+                        "description": "arrivalDate TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "departureTime",
+                        "in": "query",
+                        "description": "departureTime TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "departureDate",
+                        "in": "query",
+                        "description": "departureDate TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "capacity",
+                        "in": "query",
+                        "description": "capacity AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "airline_id",
+                        "in": "query",
+                        "description": "airline AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "airport_id",
+                        "in": "query",
+                        "description": "airport AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "maxAllowedBaggage",
+                        "in": "query",
+                        "description": "maxAllowedBaggage AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "flightNumber",
+                        "in": "query",
+                        "description": "flightNumber AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "aircraft",
+                        "in": "query",
+                        "description": "aircraft AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "origin",
+                        "in": "query",
+                        "description": "origin AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "destination",
+                        "in": "query",
+                        "description": "destination AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "type AirplaneTicket (Charter , Systemic)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cabinclass",
+                        "in": "query",
+                        "description": "cabinclass AirplaneTicket (Economy , Business , Firstclass)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket Store successfully"
+                    },
+                    "409": {
+                        "description": "AirplaneTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/AirplaneTicket/show": {
+            "get": {
+                "tags": [
+                    "AirplaneTicket"
+                ],
+                "summary": "show a AirplaneTicket",
+                "operationId": "c2e49a83477e9d5452e25aac22fd15b9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/AirplaneTicket/edit": {
+            "get": {
+                "tags": [
+                    "AirplaneTicket"
+                ],
+                "summary": "edit a AirplaneTicket",
+                "operationId": "d59228211a515493d1816495b03ecc2a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/AirplaneTicket/update": {
+            "put": {
+                "tags": [
+                    "AirplaneTicket"
+                ],
+                "summary": "update a AirplaneTicket",
+                "operationId": "2f3f00c8a81c52d31cb3f74a6072621e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "adultPrice",
+                        "in": "query",
+                        "description": "adultPrice AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "arrivalTime",
+                        "in": "query",
+                        "description": "arrivalTime TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arrivalDate",
+                        "in": "query",
+                        "description": "arrivalDate TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "departureTime",
+                        "in": "query",
+                        "description": "departureTime TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "departureDate",
+                        "in": "query",
+                        "description": "departureDate TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "capacity",
+                        "in": "query",
+                        "description": "capacity AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "airline_id",
+                        "in": "query",
+                        "description": "airline AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "airport_id",
+                        "in": "query",
+                        "description": "airport AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "maxAllowedBaggage",
+                        "in": "query",
+                        "description": "maxAllowedBaggage AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "flightNumber",
+                        "in": "query",
+                        "description": "flightNumber AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "aircraft",
+                        "in": "query",
+                        "description": "aircraft AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "origin",
+                        "in": "query",
+                        "description": "origin AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "destination",
+                        "in": "query",
+                        "description": "destination AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "type AirplaneTicket (Charter , Systemic)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cabinclass",
+                        "in": "query",
+                        "description": "cabinclass AirplaneTicket (Economy , Business , Firstclass)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket Store successfully"
+                    },
+                    "409": {
+                        "description": "AirplaneTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/AirplaneTicket/destroy": {
+            "delete": {
+                "tags": [
+                    "AirplaneTicket"
+                ],
+                "summary": "Delete a AirplaneTicket",
+                "operationId": "330bebc9f1e9a965270cd07e5e4a746d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/AirplaneTicket/restore": {
+            "put": {
+                "tags": [
+                    "AirplaneTicket"
+                ],
+                "summary": "Restore a AirplaneTicket",
+                "operationId": "1222ca1dceada4b2d549f4fee0e409b5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/TrainTicket/index": {
+            "get": {
+                "tags": [
+                    "TrainTicket"
+                ],
+                "summary": "All TrainTicket",
+                "operationId": "123893ce1d701163219a409f7e5d399c",
+                "responses": {
+                    "200": {
+                        "description": "TrainTicket detail successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/TrainTicket/create": {
+            "get": {
+                "tags": [
+                    "TrainTicket"
+                ],
+                "summary": "All TrainTicket",
+                "operationId": "95747f97850473706a4112197dd3f1eb",
+                "responses": {
+                    "200": {
+                        "description": "TrainTicket detail successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/TrainTicket/store": {
+            "post": {
+                "tags": [
+                    "TrainTicket"
+                ],
+                "summary": "Create a TrainTicket",
+                "operationId": "e14248774291a121ec4b2493c6bb47b9",
+                "parameters": [
+                    {
+                        "name": "adultPrice",
+                        "in": "query",
+                        "description": "adultPrice TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "arrivalTime",
+                        "in": "query",
+                        "description": "arrivalTime TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arrivalDate",
+                        "in": "query",
+                        "description": "arrivalDate TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "departureTime",
+                        "in": "query",
+                        "description": "departureTime TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "departureDate",
+                        "in": "query",
+                        "description": "departureDate TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "capacity",
+                        "in": "query",
+                        "description": "capacity TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "trainnumber",
+                        "in": "query",
+                        "description": "airline TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "railcompanie_id",
+                        "in": "query",
+                        "description": "railcompanie TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "origin",
+                        "in": "query",
+                        "description": "origin TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "destination",
+                        "in": "query",
+                        "description": "destination TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "type TrainTicket (4-seater-coupe , 6-seater-coupe , 4-row-hall)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TrainTicket Store successfully"
+                    },
+                    "409": {
+                        "description": "TrainTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/TrainTicket/show": {
+            "get": {
+                "tags": [
+                    "TrainTicket"
+                ],
+                "summary": "show a TrainTicket",
+                "operationId": "6d059e3f29eca85022ace2ed7f8faf0e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TrainTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/TrainTicket/edit": {
+            "get": {
+                "tags": [
+                    "TrainTicket"
+                ],
+                "summary": "edit a TrainTicket",
+                "operationId": "c57ddca141b802297e0666f7b7abf291",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TrainTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/TrainTicket/update": {
+            "put": {
+                "tags": [
+                    "TrainTicket"
+                ],
+                "summary": "update a TrainTicket",
+                "operationId": "76b332e5bdb79d597c4566c3a50cfbba",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "adultPrice",
+                        "in": "query",
+                        "description": "adultPrice TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "arrivalTime",
+                        "in": "query",
+                        "description": "arrivalTime TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arrivalDate",
+                        "in": "query",
+                        "description": "arrivalDate TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "departureTime",
+                        "in": "query",
+                        "description": "departureTime TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "departureDate",
+                        "in": "query",
+                        "description": "departureDate TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "capacity",
+                        "in": "query",
+                        "description": "capacity TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "trainnumber",
+                        "in": "query",
+                        "description": "airline TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "railcompanie_id",
+                        "in": "query",
+                        "description": "railcompanie TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "origin",
+                        "in": "query",
+                        "description": "origin TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "destination",
+                        "in": "query",
+                        "description": "destination TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "type TrainTicket (4-seater-coupe , 6-seater-coupe , 4-row-hall)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TrainTicket Update successfully"
+                    },
+                    "409": {
+                        "description": "TrainTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/TrainTicket/destroy": {
+            "delete": {
+                "tags": [
+                    "TrainTicket"
+                ],
+                "summary": "Delete a TrainTicket",
+                "operationId": "1a5b7aba9aee36df41cc2d2c9409f4a1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TrainTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/TrainTicket/restore": {
+            "put": {
+                "tags": [
+                    "TrainTicket"
+                ],
+                "summary": "Restore a TrainTicket",
+                "operationId": "06924bc3c40b0b67e52a063b9fe2c71a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TrainTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/AirplaneTicket/search": {
+            "post": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Search AirplaneTickets",
+                "operationId": "c0ce5b7df9fa0345b7215f478205bcee",
+                "parameters": [
+                    {
+                        "name": "arrivalTime",
+                        "in": "query",
+                        "description": "arrivalTime AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "origin",
+                        "in": "query",
+                        "description": "id city => origin AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "destination",
+                        "in": "query",
+                        "description": "id city => destination AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket detail successfully"
+                    }
+                }
+            }
+        },
+        "/api/ticket/airplane": {
+            "post": {
+                "tags": [
+                    "Ticket Home"
+                ],
+                "summary": "detail AirplaneTickets",
+                "operationId": "84e4913522bfd2c621cae89d0d11d990",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket detail successfully"
+                    }
+                }
+            }
+        },
+        "/api/ticket/trin": {
+            "post": {
+                "tags": [
+                    "Ticket Home"
+                ],
+                "summary": "detail TrainTicket",
+                "operationId": "e87194074a0964bc57368f120a35c970",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TrainTicket detail successfully"
+                    }
+                }
+            }
+        },
+        "/api/TrainTicket/search": {
+            "post": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Search TrainTickets",
+                "operationId": "ec60962f420dafebc801f51240f2da4e",
+                "parameters": [
+                    {
+                        "name": "arrivalTime",
+                        "in": "query",
+                        "description": "arrivalTime TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "origin",
+                        "in": "query",
+                        "description": "id city => origin TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "destination",
+                        "in": "query",
+                        "description": "id city => destination TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TrainTicket detail successfully"
+                    },
+                    "409": {
+                        "description": "TrainTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/api/User/show": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "show a User",
+                "operationId": "c64d3d5f769c326b2963b116fc7022e6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id User",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User detail successfully"
+                    }
+                }
+            }
+        },
+        "/api/User/destroy": {
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete a User",
+                "operationId": "9cc85009dccf3f1f89e09f79c2431a0c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id User",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Delete successfully"
+                    }
+                }
+            }
+        },
+        "/api/User/restore": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "restore a User",
+                "operationId": "ad70f3b2d6965b237fc0b91c0711b3da",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id User",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User restore successfully"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
