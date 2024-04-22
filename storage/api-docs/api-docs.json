@@ -346,54 +346,16 @@
                 ]
             }
         },
-        "/api/order/Paydone": {
-            "post": {
+        "/api/orders": {
+            "get": {
                 "tags": [
-                    "Order"
+                    "Orders"
                 ],
-                "summary": "detail TrainTicket",
-                "operationId": "b8bcd1e34c98067e957c109d102081aa",
-                "parameters": [
-                    {
-                        "name": "Airplane",
-                        "in": "query",
-                        "description": "id AirplaneTicket",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "totalPrice",
-                        "in": "query",
-                        "description": "totalPrice Ticket",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "type",
-                        "in": "query",
-                        "description": "type Ticket",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "passenger",
-                        "in": "query",
-                        "description": "passenger Ticket",
-                        "required": true,
-                        "schema": {
-                            "type": "json"
-                        }
-                    }
-                ],
+                "summary": "show a AirplaneTicket",
+                "operationId": "edae09698eedacdc6b8deba086cf3899",
                 "responses": {
                     "200": {
-                        "description": "Order Create successfully"
+                        "description": "AirplaneTicket detail successfully"
                     }
                 },
                 "security": [
