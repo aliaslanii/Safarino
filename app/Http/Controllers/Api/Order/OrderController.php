@@ -7,6 +7,7 @@ use App\Models\AirplaneTicket;
 use App\Models\Order;
 use App\Models\OrderInfo;
 use App\Models\TrainTicket;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -156,10 +157,31 @@ class OrderController extends Controller
                         'message' => "Double Spending"
                     ], 500);
                 } else {
+                    $Transaction = new Transaction();
+                    $Transaction->user_id = $request->user()->id;
+                    $Transaction->transaction_type = "charge";
+                    $Transaction->amount = $request->Amount;
+                    $Transaction->description = "رسید دیجیتال : " . $request->RefNum;
+                    $Transaction->save();
+                    $wallet = $request->user()->wallet;
+                    $wallet->inventory = $request->Amount;
+                    $wallet->update();
                     $order = Order::where('ordernumber', $request->ResNum)->first();
-                    $order->Amount = $request->Amount;
-                    $order->is_payed = 1;
-                    $order->update();
+                    if($wallet->inventory >= $order->Amount )
+                    {
+                        $Transaction = new Transaction();
+                        $Transaction->user_id = $request->user()->id;
+                        $Transaction->transaction_type = "debit";
+                        $Transaction->amount = $order->Amount;
+                        $Transaction->description = "سفارش .'$order->ordernumber'. - خرید بلیط: ";
+                        $Transaction->save();
+                        $wallet = $request->user()->wallet;
+                        $wallet->inventory = $wallet->inventory - $request->Amount;
+                        $wallet->update();
+                        $order->Amount = $request->Amount;
+                        $order->is_payed = 1;
+                        $order->update();
+                    }
                     $orderinfo = new OrderInfo();
                     $orderinfo->order_id = $order->id;
                     $orderinfo->MID = $request->MID;
