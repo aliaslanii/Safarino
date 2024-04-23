@@ -18,13 +18,12 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
 */
-
+/*
+|--------------------------------------------------------------------------
+| API Routes Home
+|--------------------------------------------------------------------------
+*/
 Route::prefix('auth')->group(function(){
     Route::post('register', [AuthController::class, 'userRegister']);
     Route::post('login', [AuthController::class, 'userLogin']);
@@ -64,6 +63,17 @@ Route::prefix('ticket')->group(function(){
 Route::prefix('passenger')->middleware(['auth:sanctum'])->group(function(){
     Route::post('Add', [PassengerHomeController::class,'addPassenger']);
 });
+Route::prefix('AirplaneTicket')->group(function(){
+    Route::post('search', [AirplaneTicketHomeController::class,'search']);
+});
+Route::prefix('TrainTicket')->group(function(){
+    Route::post('search', [TrainTicketHomeController::class,'search']);
+});
+/*
+|--------------------------------------------------------------------------
+| API Routes Admin
+|--------------------------------------------------------------------------
+*/
 Route::prefix('admin')->middleware(['auth:sanctum','auth.admin'])->group(function(){
     Route::prefix('City')->group(function(){
         Route::get('index', [CityControllerapi::class,'index'])->middleware('auth.read');
@@ -95,10 +105,4 @@ Route::prefix('admin')->middleware(['auth:sanctum','auth.admin'])->group(functio
         Route::delete('destroy', [TrainTicketController::class,'destroy'])->middleware('auth.read');
         Route::put('restore', [TrainTicketController::class,'restore'])->middleware('auth.create');
     });
-});
-Route::prefix('AirplaneTicket')->group(function(){
-    Route::post('search', [AirplaneTicketHomeController::class,'search']);
-});
-Route::prefix('TrainTicket')->group(function(){
-    Route::post('search', [TrainTicketHomeController::class,'search']);
 });
