@@ -158,10 +158,10 @@ class AuthController extends Controller
      *     @OA\Response(response="200", description="User detail successfully"),
      * )
      */
-    public function detail()
+    public function detail(Request $request)
     {
         try {
-            $User = Auth::user();
+            $User = $request->user();
             return Response::json([
                 'status' => true,
                 'message' => 'Done',
@@ -203,7 +203,7 @@ class AuthController extends Controller
          * @OA\Delete(
          *     path="/api/auth/destroy",
          *     summary="Delete a User",
-         *     tags={"User"},
+         *     tags={"Auth"},
          *     @OA\Parameter(
          *         name="id",
          *         in="query",
@@ -234,7 +234,7 @@ class AuthController extends Controller
          * @OA\Put(
          *     path="/api/auth/restore",
          *     summary="restore a User",
-         *     tags={"User"},
+         *     tags={"Auth"},
          *     @OA\Parameter(
          *         name="id",
          *         in="query",
