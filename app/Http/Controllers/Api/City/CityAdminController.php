@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
-class CityControllerapi extends Controller
+class CityAdminController extends Controller
 {
     /**
      * @OA\Get(
@@ -31,15 +31,6 @@ class CityControllerapi extends Controller
             ], 500);
         }
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return City::factory()->count(30)->create();
-    }
-
     /**
      * @OA\Post(
      *     path="/api/admin/City/store",

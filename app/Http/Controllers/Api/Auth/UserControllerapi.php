@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\BankInformationRequest;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\PersonalInformationRequest;

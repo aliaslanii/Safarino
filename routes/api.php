@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
-use App\Http\Controllers\Api\City\CityControllerapi;
+use App\Http\Controllers\Api\Auth\UserControllerapi;
+use App\Http\Controllers\Api\City\CityAdminController;
 use App\Http\Controllers\Api\Order\OrderController;
 use App\Http\Controllers\Api\Passenger\PassengerController;
 use App\Http\Controllers\Api\Passenger\PassengerHomeController;
@@ -11,7 +12,6 @@ use App\Http\Controllers\Api\Tickets\Home\AirplaneTicketHomeController;
 use App\Http\Controllers\Api\Tickets\Home\TicketHomeController;
 use App\Http\Controllers\Api\Tickets\Home\TrainTicketHomeController;
 use App\Http\Controllers\Api\WalletController;
-use App\Http\Controllers\UserControllerapi;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -78,14 +78,14 @@ Route::prefix('TrainTicket')->group(function(){
 */
 Route::prefix('admin')->middleware(['auth:sanctum','auth.admin'])->group(function(){
     Route::prefix('City')->group(function(){
-        Route::get('index', [CityControllerapi::class,'index'])->middleware('auth.read');
-        Route::get('create', [CityControllerapi::class,'create'])->middleware('auth.create');
-        Route::post('store', [CityControllerapi::class,'store'])->middleware('auth.create');
-        Route::get('show', [CityControllerapi::class,'show'])->middleware('auth.read');
-        Route::get('edit', [CityControllerapi::class,'edit'])->middleware('auth.update');
-        Route::put('update', [CityControllerapi::class,'update'])->middleware('auth.update');
-        Route::delete('destroy', [CityControllerapi::class,'destroy'])->middleware('auth.read');
-        Route::put('restore', [CityControllerapi::class,'restore'])->middleware('auth.create');
+        Route::get('index', [CityAdminController::class,'index'])->middleware('auth.read');
+        Route::get('create', [CityAdminController::class,'create'])->middleware('auth.create');
+        Route::post('store', [CityAdminController::class,'store'])->middleware('auth.create');
+        Route::get('show', [CityAdminController::class,'show'])->middleware('auth.read');
+        Route::get('edit', [CityAdminController::class,'edit'])->middleware('auth.update');
+        Route::put('update', [CityAdminController::class,'update'])->middleware('auth.update');
+        Route::delete('destroy', [CityAdminController::class,'destroy'])->middleware('auth.read');
+        Route::put('restore', [CityAdminController::class,'restore'])->middleware('auth.create');
     });
     Route::prefix('AirplaneTicket')->group(function(){
         Route::get('index', [AirplaneTicketController::class,'index'])->middleware('auth.read');
