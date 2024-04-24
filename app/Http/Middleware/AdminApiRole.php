@@ -18,7 +18,7 @@ class AdminApiRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->role()->where('name','admin')->first())
+        if($request->user()->role()->where('name','admin')->first())
         {
             return $next($request);
         }else{

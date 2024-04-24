@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderInfo;
 use App\Models\TrainTicket;
 use App\Models\Transaction;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -30,72 +31,79 @@ class OrderController extends Controller
     {
         try {
             $Orders = $request->user()->Order;
-            $Response = [];
-            foreach ($Orders as $Order) {
-                $userPassengers = [];
-                if ($Order->type == "Airplane") {
-                    $airplaneTicket = $Order->airplaneTicket;
-                    $Ticket = [
-                        "adultPrice" => number_format($airplaneTicket->adultPrice),
-                        "arrivalTime" => $airplaneTicket->arrivalTime,
-                        "arrivalDate" => verta($airplaneTicket->arrivalDate)->format('d-%B-l'),
-                        "departureTime" => $airplaneTicket->departureTime,
-                        "departureDate" => verta($airplaneTicket->departureDate)->format('d-%B-l'),
-                        "maxAllowedBaggage" => $airplaneTicket->maxAllowedBaggage,
-                        "aircraft" => $airplaneTicket->aircraft,
-                        "capacity" => $airplaneTicket->capacity,
-                        "flightNumber" => $airplaneTicket->flightNumber,
-                        "origin" => $airplaneTicket->cityorigin->name,
-                        "destination" => $airplaneTicket->citydestination->name,
-                        'airport' => $airplaneTicket->airport->name,
-                        'airline' => $airplaneTicket->airline->name,
-                        'airline-photo' => $airplaneTicket->airline->profile_photo_path,
-                        'type' => $airplaneTicket->type,
-                        'cabinclass' => $airplaneTicket->cabinclass,
-                        'isCompleted' => $airplaneTicket->isCompleted,
-                    ];
-                    foreach ($Order->airplaneTicket->passenger as $passenger) {
-                        if ($passenger->user_id == $request->user()->id) {
-                            $userPassengers[] = $passenger;
+            if ($Orders) {
+                $Response = [];
+                foreach ($Orders as $Order) {
+                    $userPassengers = [];
+                    if ($Order->type == "Airplane") {
+                        $airplaneTicket = $Order->airplaneTicket;
+                        $Ticket = [
+                            "adultPrice" => number_format($airplaneTicket->adultPrice),
+                            "arrivalTime" => $airplaneTicket->arrivalTime,
+                            "arrivalDate" => verta($airplaneTicket->arrivalDate)->format('d-%B-l'),
+                            "departureTime" => $airplaneTicket->departureTime,
+                            "departureDate" => verta($airplaneTicket->departureDate)->format('d-%B-l'),
+                            "maxAllowedBaggage" => $airplaneTicket->maxAllowedBaggage,
+                            "aircraft" => $airplaneTicket->aircraft,
+                            "capacity" => $airplaneTicket->capacity,
+                            "flightNumber" => $airplaneTicket->flightNumber,
+                            "origin" => $airplaneTicket->cityorigin->name,
+                            "destination" => $airplaneTicket->citydestination->name,
+                            'airport' => $airplaneTicket->airport->name,
+                            'airline' => $airplaneTicket->airline->name,
+                            'airline-photo' => $airplaneTicket->airline->profile_photo_path,
+                            'type' => $airplaneTicket->type,
+                            'cabinclass' => $airplaneTicket->cabinclass,
+                            'isCompleted' => $airplaneTicket->isCompleted,
+                        ];
+                        foreach ($Order->airplaneTicket->passenger as $passenger) {
+                            if ($passenger->user_id == $request->user()->id) {
+                                $userPassengers[] = $passenger;
+                            }
+                        }
+                    } elseif ($Order->type == "Train") {
+                        $TrainTicket = $Order->trainTicket;
+                        $Ticket = [
+                            "adultPrice" => number_format($TrainTicket->adultPrice),
+                            "arrivalTime" => $TrainTicket->arrivalTime,
+                            "arrivalDate" => verta($TrainTicket->arrivalDate)->format('d-%B-l'),
+                            "departureTime" => $TrainTicket->departureTime,
+                            "departureDate" => verta($TrainTicket->departureDate)->format('d-%B-l'),
+                            "capacity" => $TrainTicket->capacity,
+                            "trainnumber" => $TrainTicket->trainnumber,
+                            "origin" => $TrainTicket->cityorigin->name,
+                            "destination" => $TrainTicket->citydestination->name,
+                            'Railcompanie' => $TrainTicket->Railcompanie->name,
+                            'Railcompanie-photo' => $TrainTicket->Railcompanie->profile_photo_path,
+                            'type' => $TrainTicket->type,
+                            'isCompleted' => $TrainTicket->isCompleted,
+                        ];
+                        foreach ($Order->trainTicket->passenger as $passenger) {
+                            if ($passenger->user_id == $request->user()->id) {
+                                $userPassengers[] = $passenger;
+                            }
                         }
                     }
-                } elseif ($Order->type == "Train") {
-                    $TrainTicket = $Order->trainTicket;
-                    $Ticket = [
-                        "adultPrice" => number_format($TrainTicket->adultPrice),
-                        "arrivalTime" => $TrainTicket->arrivalTime,
-                        "arrivalDate" => verta($TrainTicket->arrivalDate)->format('d-%B-l'),
-                        "departureTime" => $TrainTicket->departureTime,
-                        "departureDate" => verta($TrainTicket->departureDate)->format('d-%B-l'),
-                        "capacity" => $TrainTicket->capacity,
-                        "trainnumber" => $TrainTicket->trainnumber,
-                        "origin" => $TrainTicket->cityorigin->name,
-                        "destination" => $TrainTicket->citydestination->name,
-                        'Railcompanie' => $TrainTicket->Railcompanie->name,
-                        'Railcompanie-photo' => $TrainTicket->Railcompanie->profile_photo_path,
-                        'type' => $TrainTicket->type,
-                        'isCompleted' => $TrainTicket->isCompleted,
+                    $AirplaneTicketData = [
+                        'ordernumber' => $Order->ordernumber,
+                        'Amount' => $Order->Amount,
+                        'Status' => $Order->Status,
+                        'type' => $Order->type,
+                        'ticket' => $Ticket,
+                        'passengers' => $userPassengers,
                     ];
-                    foreach ($Order->trainTicket->passenger as $passenger) {
-                        if ($passenger->user_id == $request->user()->id) {
-                            $userPassengers[] = $passenger;
-                        }
-                    }
+                    $Response[] = $AirplaneTicketData;
                 }
-                $AirplaneTicketData = [
-                    'ordernumber' => $Order->ordernumber,
-                    'Amount' => $Order->Amount,
-                    'Status' => $Order->Status,
-                    'type' => $Order->type,
-                    'ticket' => $Ticket,
-                    'passengers' => $userPassengers,
-                ];
-                $Response[] = $AirplaneTicketData;
+                return Response::json([
+                    'status' => true,
+                    'order' => $Response,
+                ], 200);
+            } else {
+                return Response::json([
+                    'status' => true,
+                    'order' => null,
+                ], 200);
             }
-            return Response::json([
-                'status' => true,
-                'order' => $Response,
-            ], 200);
         } catch (\Throwable $th) {
             return Response::json([
                 'status' => false,
@@ -167,15 +175,13 @@ class OrderController extends Controller
                     $wallet->inventory = $request->Amount;
                     $wallet->update();
                     $order = Order::where('ordernumber', $request->ResNum)->first();
-                    if($wallet->inventory >= $order->Amount )
-                    {
+                    if ($wallet->inventory >= $order->Amount) {
                         $Transaction = new Transaction();
                         $Transaction->user_id = $request->user()->id;
                         $Transaction->transaction_type = "debit";
                         $Transaction->amount = $order->Amount;
                         $Transaction->description = "سفارش .'$order->ordernumber'. - خرید بلیط: ";
                         $Transaction->save();
-                        $wallet = $request->user()->wallet;
                         $wallet->inventory = $wallet->inventory - $request->Amount;
                         $wallet->update();
                         $order->Amount = $request->Amount;

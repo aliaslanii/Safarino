@@ -48,6 +48,13 @@ class AuthController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
+     *     @OA\Parameter(
+     *         name="password_confirmation",
+     *         in="query",
+     *         description="User password confirmation",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
      *     @OA\Response(response="200", description="User registered successfully"),
      *     @OA\Response(response="403", description="Validation errors")
      * )
@@ -123,7 +130,7 @@ class AuthController extends Controller
                     'errors' => $Validate->errors()
                 ], 403);
             }
-            if (!Auth::attempt($request->only(['mobile','password']))) {
+            if (!Auth::attempt($request->only(['mobile', 'password']))) {
                 return response()->json([
                     'status' => false,
                     'message' => 'mobile & Password does not match with our record.',
@@ -176,11 +183,11 @@ class AuthController extends Controller
      *     @OA\Response(response="200", description="User Logout Successfully"),
      * )
      */
-    public function userLogout()
+    public function userLogout(Request $request)
     {
         try {
-            $User = Auth::user();
-            $User->tokens()->delete();
+            $user = $request->usert();
+            $user->tokens()->delete();
             return Response::json([
                 'status' => true,
                 'message' => 'Logout Successfully'
@@ -192,4 +199,66 @@ class AuthController extends Controller
             ], 500);
         }
     }
+       /**
+         * @OA\Delete(
+         *     path="/api/auth/destroy",
+         *     summary="Delete a User",
+         *     tags={"User"},
+         *     @OA\Parameter(
+         *         name="id",
+         *         in="query",
+         *         description="id User",
+         *         required=true,
+         *         @OA\Schema(type="string")
+         *     ),
+         *     @OA\Response(response="200", description="User Delete successfully"),
+         * )
+         */
+        public function destroy(Request $request)
+        {
+            try {
+                $User = User::findOrfail($request->id);
+                $User->delete();
+                return Response::json([
+                    'status' => true,
+                    'data' => $User
+                ], 200);
+            } catch (\Throwable $th) {
+                return Response::json([
+                    'status' => false,
+                    'message' => $th->getMessage()
+                ], 500);
+            }       
+        }
+       /**
+         * @OA\Put(
+         *     path="/api/auth/restore",
+         *     summary="restore a User",
+         *     tags={"User"},
+         *     @OA\Parameter(
+         *         name="id",
+         *         in="query",
+         *         description="id User",
+         *         required=true,
+         *         @OA\Schema(type="string")
+         *     ),
+         *     @OA\Response(response="200", description="User restore successfully"),
+         * )
+         */
+        public function restore(Request $request)
+        {
+            try {
+                $User = User::where('id',$request->id)->restore();
+                return Response::json([
+                    'status' => true,
+                    'data' => $User
+                ], 200);
+            } catch (\Throwable $th) {
+                return Response::json([
+                    'status' => false,
+                    'message' => $th->getMessage()
+                ], 500);
+            }
+
+        }
 }

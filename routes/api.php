@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
-use App\Http\Controllers\Api\City\CityControllerapi;
+use App\Http\Controllers\Api\Auth\UserControllerapi;
+use App\Http\Controllers\Api\City\CityAdminController;
 use App\Http\Controllers\Api\Order\OrderController;
 use App\Http\Controllers\Api\Passenger\PassengerController;
 use App\Http\Controllers\Api\Passenger\PassengerHomeController;
@@ -11,29 +12,26 @@ use App\Http\Controllers\Api\Tickets\Home\AirplaneTicketHomeController;
 use App\Http\Controllers\Api\Tickets\Home\TicketHomeController;
 use App\Http\Controllers\Api\Tickets\Home\TrainTicketHomeController;
 use App\Http\Controllers\Api\WalletController;
-use App\Http\Controllers\UserControllerapi;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| API Routes Home
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
 */
-
 Route::prefix('auth')->group(function(){
     Route::post('register', [AuthController::class, 'userRegister']);
     Route::post('login', [AuthController::class, 'userLogin']);
     Route::get('detail', [AuthController::class, 'detail'])->middleware('auth:sanctum');
     Route::get('logout', [AuthController::class, 'userLogout'])->middleware('auth:sanctum');
+    Route::delete('destroy', [PassengerController::class,'destroy'])->middleware(['auth.sanctum','auth.admin','auth.read']);
+    Route::put('restore', [PassengerController::class,'restore'])->middleware(['auth.sanctum','auth.admin','auth.create']);
 });
 Route::prefix('User')->group(function(){
-    Route::get('show', [UserControllerapi::class,'show'])->middleware('auth:sanctum');
-    Route::put('update', [UserControllerapi::class,'update'])->middleware('auth:sanctum');
+    Route::put('ChangePassword', [UserControllerapi::class,'changePassword'])->middleware('auth:sanctum');
+    Route::put('PersonalInformation', [UserControllerapi::class,'personalInformation'])->middleware('auth:sanctum');
+    Route::put('BankInformation', [UserControllerapi::class,'bankInformation'])->middleware('auth:sanctum');
+    Route::put('ChangeMobile', [UserControllerapi::class,'changeMobile'])->middleware('auth:sanctum');
+    Route::put('ChangeEmail', [UserControllerapi::class,'changeEmail'])->middleware('auth:sanctum');
     Route::delete('destroy', [UserControllerapi::class,'destroy']);
     Route::put('restore', [UserControllerapi::class,'restore']);
 });
@@ -43,8 +41,6 @@ Route::prefix('Passenger')->middleware(['auth:sanctum'])->group(function(){
     Route::get('show', [PassengerController::class,'show'])->middleware('auth.read');
     Route::get('edit', [PassengerController::class,'edit'])->middleware('auth.update');
     Route::put('update', [PassengerController::class,'update'])->middleware('auth.update');
-    Route::delete('destroy', [PassengerController::class,'destroy'])->middleware('auth.read');
-    Route::put('restore', [PassengerController::class,'restore'])->middleware('auth.create');
 });
 Route::prefix('wallet')->middleware(['auth:sanctum'])->group(function(){
     Route::post('chargewallet', [WalletController::class,'chargewallet']);
@@ -64,16 +60,27 @@ Route::prefix('ticket')->group(function(){
 Route::prefix('passenger')->middleware(['auth:sanctum'])->group(function(){
     Route::post('Add', [PassengerHomeController::class,'addPassenger']);
 });
+Route::prefix('AirplaneTicket')->group(function(){
+    Route::post('search', [AirplaneTicketHomeController::class,'search']);
+});
+Route::prefix('TrainTicket')->group(function(){
+    Route::post('search', [TrainTicketHomeController::class,'search']);
+});
+/*
+|--------------------------------------------------------------------------
+| API Routes Admin
+|--------------------------------------------------------------------------
+*/
 Route::prefix('admin')->middleware(['auth:sanctum','auth.admin'])->group(function(){
     Route::prefix('City')->group(function(){
-        Route::get('index', [CityControllerapi::class,'index'])->middleware('auth.read');
-        Route::get('create', [CityControllerapi::class,'create'])->middleware('auth.create');
-        Route::post('store', [CityControllerapi::class,'store'])->middleware('auth.create');
-        Route::get('show', [CityControllerapi::class,'show'])->middleware('auth.read');
-        Route::get('edit', [CityControllerapi::class,'edit'])->middleware('auth.update');
-        Route::put('update', [CityControllerapi::class,'update'])->middleware('auth.update');
-        Route::delete('destroy', [CityControllerapi::class,'destroy'])->middleware('auth.read');
-        Route::put('restore', [CityControllerapi::class,'restore'])->middleware('auth.create');
+        Route::get('index', [CityAdminController::class,'index'])->middleware('auth.read');
+        Route::get('create', [CityAdminController::class,'create'])->middleware('auth.create');
+        Route::post('store', [CityAdminController::class,'store'])->middleware('auth.create');
+        Route::get('show', [CityAdminController::class,'show'])->middleware('auth.read');
+        Route::get('edit', [CityAdminController::class,'edit'])->middleware('auth.update');
+        Route::put('update', [CityAdminController::class,'update'])->middleware('auth.update');
+        Route::delete('destroy', [CityAdminController::class,'destroy'])->middleware('auth.read');
+        Route::put('restore', [CityAdminController::class,'restore'])->middleware('auth.create');
     });
     Route::prefix('AirplaneTicket')->group(function(){
         Route::get('index', [AirplaneTicketController::class,'index'])->middleware('auth.read');
@@ -95,10 +102,4 @@ Route::prefix('admin')->middleware(['auth:sanctum','auth.admin'])->group(functio
         Route::delete('destroy', [TrainTicketController::class,'destroy'])->middleware('auth.read');
         Route::put('restore', [TrainTicketController::class,'restore'])->middleware('auth.create');
     });
-});
-Route::prefix('AirplaneTicket')->group(function(){
-    Route::post('search', [AirplaneTicketHomeController::class,'search']);
-});
-Route::prefix('TrainTicket')->group(function(){
-    Route::post('search', [TrainTicketHomeController::class,'search']);
 });

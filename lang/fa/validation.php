@@ -12,10 +12,9 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-
     'accepted'             => ':attribute باید پذیرفته شود.',
     'accepted_if'          => ':attribute باید پذیرفته شود، زمانی که :other برابر با :value باشد.',
-    'active_url'           => ':attribute یک URL معتبر نیست.',
+    'active_url'           => ':attribute یک URL معتبر نیفرمت رمز عبور معتبر نیستست.',
     'after'                => ':attribute باید تاریخی بعد از :date باشد.',
     'after_or_equal'       => ':attribute باید تاریخی بعد از :date، یا برابر با آن باشد.',
     'alpha'                => ':attribute باید فقط شامل حروف الفبا باشد.',
