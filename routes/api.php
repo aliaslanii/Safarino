@@ -13,7 +13,6 @@ use App\Http\Controllers\Api\Tickets\Home\TrainTicketHomeController;
 use App\Http\Controllers\Api\WalletController;
 use App\Http\Controllers\UserControllerapi;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
