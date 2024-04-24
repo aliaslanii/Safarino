@@ -17,7 +17,7 @@ class DeleteAdminApiRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->role()->where('name','Delete')->first())
+        if($request->user()->role()->where('name','Delete')->first())
         {
             return $next($request);
         }else{

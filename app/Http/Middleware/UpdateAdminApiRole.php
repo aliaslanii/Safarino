@@ -17,7 +17,7 @@ class UpdateAdminApiRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->role()->where('name','Update')->first())
+        if($request->user()->role()->where('name','Update')->first())
         {
             return $next($request);
         }else{

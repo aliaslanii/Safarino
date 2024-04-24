@@ -18,7 +18,7 @@ class CreateAdminApiRole
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        if($user->role()->where('name','Create')->first())
+        if($request->user()->role()->where('name','Create')->first())
         {
             return $next($request);
         }else{
