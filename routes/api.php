@@ -29,10 +29,15 @@ Route::prefix('auth')->group(function(){
     Route::post('login', [AuthController::class, 'userLogin']);
     Route::get('detail', [AuthController::class, 'detail'])->middleware('auth:sanctum');
     Route::get('logout', [AuthController::class, 'userLogout'])->middleware('auth:sanctum');
+    Route::delete('destroy', [PassengerController::class,'destroy'])->middleware(['auth.sanctum','auth.admin','auth.read']);
+    Route::put('restore', [PassengerController::class,'restore'])->middleware(['auth.sanctum','auth.admin','auth.create']);
 });
 Route::prefix('User')->group(function(){
-    Route::get('show', [UserControllerapi::class,'show'])->middleware('auth:sanctum');
-    Route::put('update', [UserControllerapi::class,'update'])->middleware('auth:sanctum');
+    Route::put('ChangePassword', [UserControllerapi::class,'changePassword'])->middleware('auth:sanctum');
+    Route::put('PersonalInformation', [UserControllerapi::class,'personalInformation'])->middleware('auth:sanctum');
+    Route::put('BankInformation', [UserControllerapi::class,'bankInformation'])->middleware('auth:sanctum');
+    Route::put('ChangeMobile', [UserControllerapi::class,'changeMobile'])->middleware('auth:sanctum');
+    Route::put('ChangeEmail', [UserControllerapi::class,'changeEmail'])->middleware('auth:sanctum');
     Route::delete('destroy', [UserControllerapi::class,'destroy']);
     Route::put('restore', [UserControllerapi::class,'restore']);
 });
@@ -42,8 +47,6 @@ Route::prefix('Passenger')->middleware(['auth:sanctum'])->group(function(){
     Route::get('show', [PassengerController::class,'show'])->middleware('auth.read');
     Route::get('edit', [PassengerController::class,'edit'])->middleware('auth.update');
     Route::put('update', [PassengerController::class,'update'])->middleware('auth.update');
-    Route::delete('destroy', [PassengerController::class,'destroy'])->middleware('auth.read');
-    Route::put('restore', [PassengerController::class,'restore'])->middleware('auth.create');
 });
 Route::prefix('wallet')->middleware(['auth:sanctum'])->group(function(){
     Route::post('chargewallet', [WalletController::class,'chargewallet']);
