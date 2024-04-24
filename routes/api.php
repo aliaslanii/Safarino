@@ -23,8 +23,8 @@ Route::prefix('auth')->group(function(){
     Route::post('login', [AuthController::class, 'userLogin']);
     Route::get('detail', [AuthController::class, 'detail'])->middleware('auth:sanctum');
     Route::get('logout', [AuthController::class, 'userLogout'])->middleware('auth:sanctum');
-    Route::delete('destroy', [PassengerController::class,'destroy'])->middleware(['auth.sanctum','auth.admin','auth.read']);
-    Route::put('restore', [PassengerController::class,'restore'])->middleware(['auth.sanctum','auth.admin','auth.create']);
+    Route::delete('destroy', [AuthController::class,'destroy'])->middleware(['auth.sanctum','auth.admin','auth.read']);
+    Route::put('restore', [AuthController::class,'restore'])->middleware(['auth.sanctum','auth.admin','auth.create']);
 });
 Route::prefix('User')->group(function(){
     Route::put('ChangePassword', [UserControllerapi::class,'changePassword'])->middleware('auth:sanctum');
