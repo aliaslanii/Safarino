@@ -5,420 +5,13 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/auth/register": {
-            "post": {
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "Register a new user",
-                "operationId": "15a305cccb0e449b37cf83dd069da62e",
-                "parameters": [
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "User name",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "mobile",
-                        "in": "query",
-                        "description": "User mobile",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "description": "User email",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "description": "User password",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password_confirmation",
-                        "in": "query",
-                        "description": "User password confirmation",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "User registered successfully"
-                    },
-                    "403": {
-                        "description": "Validation errors"
-                    }
-                }
-            }
-        },
-        "/api/auth/login": {
-            "post": {
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "Login user",
-                "operationId": "5af4433e29a0b65a26a6dde1e4cd7e46",
-                "parameters": [
-                    {
-                        "name": "mobile",
-                        "in": "query",
-                        "description": "User Mobile",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "description": "User's password",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "User login successfully"
-                    },
-                    "403": {
-                        "description": "Validation errors"
-                    },
-                    "401": {
-                        "description": "Login information is incorrect"
-                    }
-                }
-            }
-        },
-        "/api/auth/detail": {
-            "get": {
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "detail user login",
-                "operationId": "cb93db4d4a2f32eaa6737a3003c8e541",
-                "responses": {
-                    "200": {
-                        "description": "User detail successfully"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/auth/logout": {
-            "get": {
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "user logout",
-                "operationId": "b5e2ebd9118be7f94ef12797bff40bb1",
-                "responses": {
-                    "200": {
-                        "description": "User Logout Successfully"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/auth/destroy": {
-            "delete": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Delete a User",
-                "operationId": "b1f939359c14c37ebfa49de7db6721d5",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "id User",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "User Delete successfully"
-                    }
-                }
-            }
-        },
-        "/api/auth/restore": {
-            "put": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "restore a User",
-                "operationId": "56574f31ab5e9d2116aaf9a3b0f89cb1",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "id User",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "User restore successfully"
-                    }
-                }
-            }
-        },
-        "/api/User/ChangePassword": {
-            "put": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "ChangePassword a User",
-                "operationId": "73f6437ff6558dce2ef21e24e3dc5aac",
-                "parameters": [
-                    {
-                        "name": "now_password",
-                        "in": "query",
-                        "description": "User Now password",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "new_password",
-                        "in": "query",
-                        "description": "User New password",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "new_password_confirmation",
-                        "in": "query",
-                        "description": "User New password confirmation",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "User update successfully"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/User/PersonalInformation": {
-            "put": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "show a User",
-                "operationId": "be1b856c7bd3fe28d702b0e7a4e13bfe",
-                "parameters": [
-                    {
-                        "name": "firstName",
-                        "in": "query",
-                        "description": "firstName Passenger",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "lastName",
-                        "in": "query",
-                        "description": "lastName Passenger",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "nationalcode",
-                        "in": "query",
-                        "description": "nationalcode Passenger",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "gender",
-                        "in": "query",
-                        "description": "gender Passenger (male,femail)",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "birthday",
-                        "in": "query",
-                        "description": "birthday Passenger",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Passenger detail successfully"
-                    },
-                    "409": {
-                        "description": "TrainTicket Validate Error"
-                    },
-                    "500": {
-                        "description": "Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/User/BankInformation": {
-            "put": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Add bankInformation a User",
-                "operationId": "8fe8790f58d55c1eed015bdfe7f59202",
-                "parameters": [
-                    {
-                        "name": "shabanumber",
-                        "in": "query",
-                        "description": "User shabanumber",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "cardnumber",
-                        "in": "query",
-                        "description": "User cardnumber",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "add personalInformation successfully"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/User/ChangeMobile": {
-            "put": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Add mobile a User",
-                "operationId": "23e141388950e753ded0e3e7a4446a31",
-                "parameters": [
-                    {
-                        "name": "mobile",
-                        "in": "query",
-                        "description": "User mobile",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "add personalInformation successfully"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/User/ChangeEmail": {
-            "put": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Add email a User",
-                "operationId": "9e102192be8d702790113663fa27256b",
-                "parameters": [
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "description": "email mobile",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "add personalInformation successfully"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
         "/api/admin/City/index": {
             "get": {
                 "tags": [
                     "City"
                 ],
                 "summary": "All City",
-                "operationId": "350ad1dc8c83b492eda590052822e406",
+                "operationId": "7ad03ed57cc51308d7caa802ff6c9276",
                 "responses": {
                     "200": {
                         "description": "City detail successfully"
@@ -437,7 +30,7 @@
                     "City"
                 ],
                 "summary": "Create a City",
-                "operationId": "b751f538c8aaf084e2a1f80926873c7d",
+                "operationId": "c3af7c5957f9d6422cb3935bc07c6b2c",
                 "parameters": [
                     {
                         "name": "city",
@@ -467,7 +60,7 @@
                     "City"
                 ],
                 "summary": "show a City",
-                "operationId": "d1a72abc825a19def210c813ac7c8dbc",
+                "operationId": "bcad20fdbcce1fcc05ef06bd6adf3e4d",
                 "parameters": [
                     {
                         "name": "id",
@@ -497,7 +90,7 @@
                     "City"
                 ],
                 "summary": "edit a City",
-                "operationId": "304f6e5998798d1dbc479d69ee5b5b5c",
+                "operationId": "270332312be577a882e5df66953dcb1e",
                 "parameters": [
                     {
                         "name": "id",
@@ -527,7 +120,7 @@
                     "City"
                 ],
                 "summary": "Update a City",
-                "operationId": "2d59b2b9586315c302e773f753fb7e94",
+                "operationId": "e06d1e2fb1eeaf3edc4ed71238a820a0",
                 "parameters": [
                     {
                         "name": "id",
@@ -566,7 +159,7 @@
                     "City"
                 ],
                 "summary": "Delete a City",
-                "operationId": "906b26f1e577c4ec7dbfa6eb095a1a44",
+                "operationId": "915e005c6b7996ee26df6750357bb99f",
                 "parameters": [
                     {
                         "name": "id",
@@ -596,7 +189,7 @@
                     "City"
                 ],
                 "summary": "Restore a City",
-                "operationId": "488f09a611d58fd40007a7f93bf469bf",
+                "operationId": "21a4dc1a8ec2ddcd333d989eda8afdab",
                 "parameters": [
                     {
                         "name": "id",
@@ -620,30 +213,16 @@
                 ]
             }
         },
-        "/api/City/All": {
-            "put": {
-                "tags": [
-                    "City Home"
-                ],
-                "summary": "All City",
-                "operationId": "da58640c119d1881d2c81f89b4c46712",
-                "responses": {
-                    "200": {
-                        "description": "User update successfully"
-                    }
-                }
-            }
-        },
-        "/api/orders": {
+        "/api/admin/Setting/index": {
             "get": {
                 "tags": [
-                    "Orders"
+                    "Setting"
                 ],
-                "summary": "show a AirplaneTicket",
-                "operationId": "edae09698eedacdc6b8deba086cf3899",
+                "summary": "index Setting",
+                "operationId": "c5434a750ee7e1d40418419a8be20ee8",
                 "responses": {
                     "200": {
-                        "description": "AirplaneTicket detail successfully"
+                        "description": "Setting Show successfully"
                     }
                 },
                 "security": [
@@ -653,134 +232,81 @@
                 ]
             }
         },
-        "/api/Passenger/create": {
-            "get": {
-                "tags": [
-                    "Passenger"
-                ],
-                "summary": "Create 30 Fake Data in Passenger",
-                "operationId": "a8d578d74a24af93b35275f9ffef16a7",
-                "responses": {
-                    "200": {
-                        "description": "Create 30 Fake Data in Passenger"
-                    },
-                    "500": {
-                        "description": "Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/Passenger/store": {
+        "/api/admin/Setting/update": {
             "post": {
                 "tags": [
-                    "Passenger"
+                    "Setting"
                 ],
-                "summary": "Create a Passenger",
-                "operationId": "95ea0a0313abb1f793238d6bf039491a",
+                "summary": "Update Setting",
+                "operationId": "055afc68f9239aae33fb2d6bb5fa1725",
                 "parameters": [
                     {
-                        "name": "firstName",
+                        "name": "first_phone",
                         "in": "query",
-                        "description": "firstName Passenger",
+                        "description": "first_phone Site",
                         "required": true,
                         "schema": {
                             "type": "string"
                         }
                     },
                     {
-                        "name": "lastName",
+                        "name": "second_phone",
                         "in": "query",
-                        "description": "lastName Passenger",
+                        "description": "second_phone Site",
                         "required": true,
                         "schema": {
                             "type": "string"
                         }
                     },
                     {
-                        "name": "nationalcode",
+                        "name": "email",
                         "in": "query",
-                        "description": "nationalcode Passenger",
+                        "description": "email Site",
                         "required": true,
                         "schema": {
                             "type": "string"
                         }
                     },
                     {
-                        "name": "gender",
+                        "name": "address",
                         "in": "query",
-                        "description": "gender Passenger (male,femail)",
+                        "description": "address Site",
                         "required": true,
                         "schema": {
                             "type": "string"
                         }
                     },
                     {
-                        "name": "birthday",
+                        "name": "instagram",
                         "in": "query",
-                        "description": "birthday Passenger",
+                        "description": "instagram Site",
                         "required": true,
                         "schema": {
                             "type": "string"
                         }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Passenger detail successfully"
                     },
-                    "409": {
-                        "description": "TrainTicket Validate Error"
-                    },
-                    "500": {
-                        "description": "Server Error"
-                    }
-                },
-                "security": [
                     {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/Passenger/show": {
-            "get": {
-                "tags": [
-                    "Passenger"
-                ],
-                "summary": "User Passengers",
-                "operationId": "ea322437a151b91877ba0072053b0e3a",
-                "responses": {
-                    "200": {
-                        "description": "get Passengers User successfully"
-                    },
-                    "500": {
-                        "description": "Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/Passenger/edit": {
-            "get": {
-                "tags": [
-                    "Passenger"
-                ],
-                "summary": "edit a Passenger",
-                "operationId": "d6894fae42581a8f4ca6c98adb97f994",
-                "parameters": [
-                    {
-                        "name": "id",
+                        "name": "whatsapp",
                         "in": "query",
-                        "description": "id Passenger",
+                        "description": "whatsapp Site",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "linkdin",
+                        "in": "query",
+                        "description": "linkdin Site",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "facebook",
+                        "in": "query",
+                        "description": "facebook Site",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -789,212 +315,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Passenger detail successfully"
-                    },
-                    "500": {
-                        "description": "Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/Passenger/update": {
-            "put": {
-                "tags": [
-                    "Passenger"
-                ],
-                "summary": "Update a Passenger",
-                "operationId": "0843b09d4174a93ff943ff1fb4cc95bc",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "id Passenger",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "firstName",
-                        "in": "query",
-                        "description": "firstName Passenger",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "lastName",
-                        "in": "query",
-                        "description": "lastName Passenger",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "nationalcode",
-                        "in": "query",
-                        "description": "nationalcode Passenger",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "gender",
-                        "in": "query",
-                        "description": "gender Passenger (male,femail)",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "birthday",
-                        "in": "query",
-                        "description": "birthday Passenger",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Passenger detail successfully"
-                    },
-                    "409": {
-                        "description": "TrainTicket Validate Error"
-                    },
-                    "500": {
-                        "description": "Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/Passenger/destroy": {
-            "delete": {
-                "tags": [
-                    "Passenger"
-                ],
-                "summary": "Delete a Passenger",
-                "operationId": "43178b44f79acb77fa193c4570a2d8f1",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "id Passenger",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Passenger detail successfully"
-                    },
-                    "500": {
-                        "description": "Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/Passenger/restore": {
-            "put": {
-                "tags": [
-                    "Passenger"
-                ],
-                "summary": "Restore a Passenger",
-                "operationId": "13e8568f2fe4b1f473994502b6d7f009",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "id Passenger",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Passenger detail successfully"
-                    },
-                    "500": {
-                        "description": "Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/passenger/Add": {
-            "post": {
-                "tags": [
-                    "Passenger Ticket"
-                ],
-                "summary": "Create|found Passengers",
-                "operationId": "d066c09f849b16c6e9a253eabb4448d9",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "passengers": {
-                                        "type": "array",
-                                        "items": {
-                                            "properties": {
-                                                "firstName": {
-                                                    "type": "string"
-                                                },
-                                                "lastName": {
-                                                    "type": "string"
-                                                },
-                                                "birthday": {
-                                                    "type": "string",
-                                                    "format": "date"
-                                                },
-                                                "nationalcode": {
-                                                    "type": "string"
-                                                },
-                                                "gender": {
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "passenger Create|Found successfully"
+                        "description": "Update Setting successfully"
                     }
                 },
                 "security": [
@@ -1010,7 +331,7 @@
                     "AirplaneTicket"
                 ],
                 "summary": "All AirplaneTicket",
-                "operationId": "b782676b1f8c42fd0c73f302a67548d0",
+                "operationId": "dc09b1f632218c7d546882c1cc52630b",
                 "responses": {
                     "200": {
                         "description": "AirplaneTicket detail successfully"
@@ -1029,7 +350,7 @@
                     "AirplaneTicket"
                 ],
                 "summary": "All AirplaneTicket",
-                "operationId": "00e16d387ade0a3f0e633175b142c7be",
+                "operationId": "b2a7f25140eb2e566d78554682339b8c",
                 "responses": {
                     "200": {
                         "description": "AirplaneTicket detail successfully"
@@ -1048,7 +369,7 @@
                     "AirplaneTicket"
                 ],
                 "summary": "Create a AirplaneTicket",
-                "operationId": "fe199d4d1bdcc2cf3c1b5455e589b5c4",
+                "operationId": "05106549ce8fccd0bff02b3208fcb02d",
                 "parameters": [
                     {
                         "name": "adultPrice",
@@ -1210,7 +531,7 @@
                     "AirplaneTicket"
                 ],
                 "summary": "show a AirplaneTicket",
-                "operationId": "c2e49a83477e9d5452e25aac22fd15b9",
+                "operationId": "c6a4cbfe9e11676bc8414a649aacfd9e",
                 "parameters": [
                     {
                         "name": "id",
@@ -1240,7 +561,7 @@
                     "AirplaneTicket"
                 ],
                 "summary": "edit a AirplaneTicket",
-                "operationId": "d59228211a515493d1816495b03ecc2a",
+                "operationId": "a0c1c284e98e54c250972d9d92027c4d",
                 "parameters": [
                     {
                         "name": "id",
@@ -1270,7 +591,7 @@
                     "AirplaneTicket"
                 ],
                 "summary": "update a AirplaneTicket",
-                "operationId": "2f3f00c8a81c52d31cb3f74a6072621e",
+                "operationId": "978bccbec987dd3e5fc7f1133f99e045",
                 "parameters": [
                     {
                         "name": "id",
@@ -1441,7 +762,7 @@
                     "AirplaneTicket"
                 ],
                 "summary": "Delete a AirplaneTicket",
-                "operationId": "330bebc9f1e9a965270cd07e5e4a746d",
+                "operationId": "e929199ad9db25f86cf738fd39f2c168",
                 "parameters": [
                     {
                         "name": "id",
@@ -1471,7 +792,7 @@
                     "AirplaneTicket"
                 ],
                 "summary": "Restore a AirplaneTicket",
-                "operationId": "1222ca1dceada4b2d549f4fee0e409b5",
+                "operationId": "8aadafaee7b3451309b0d3d783d69026",
                 "parameters": [
                     {
                         "name": "id",
@@ -1501,7 +822,7 @@
                     "TrainTicket"
                 ],
                 "summary": "All TrainTicket",
-                "operationId": "123893ce1d701163219a409f7e5d399c",
+                "operationId": "a63a9bdda535f7ac311f7b0d170343d5",
                 "responses": {
                     "200": {
                         "description": "TrainTicket detail successfully"
@@ -1523,7 +844,7 @@
                     "TrainTicket"
                 ],
                 "summary": "All TrainTicket",
-                "operationId": "95747f97850473706a4112197dd3f1eb",
+                "operationId": "5e9e1b21991e4def2d3298d8d80176dc",
                 "responses": {
                     "200": {
                         "description": "TrainTicket detail successfully"
@@ -1545,7 +866,7 @@
                     "TrainTicket"
                 ],
                 "summary": "Create a TrainTicket",
-                "operationId": "e14248774291a121ec4b2493c6bb47b9",
+                "operationId": "51834a559856688b6458c4a16c2d2b8a",
                 "parameters": [
                     {
                         "name": "adultPrice",
@@ -1671,7 +992,7 @@
                     "TrainTicket"
                 ],
                 "summary": "show a TrainTicket",
-                "operationId": "6d059e3f29eca85022ace2ed7f8faf0e",
+                "operationId": "4986e3297205fb569762471b7523d5b4",
                 "parameters": [
                     {
                         "name": "id",
@@ -1701,7 +1022,7 @@
                     "TrainTicket"
                 ],
                 "summary": "edit a TrainTicket",
-                "operationId": "c57ddca141b802297e0666f7b7abf291",
+                "operationId": "ea0500b7c2a250f89d6614f291d03a48",
                 "parameters": [
                     {
                         "name": "id",
@@ -1731,7 +1052,7 @@
                     "TrainTicket"
                 ],
                 "summary": "update a TrainTicket",
-                "operationId": "76b332e5bdb79d597c4566c3a50cfbba",
+                "operationId": "62ac05da52535f3b48aafa917bf20396",
                 "parameters": [
                     {
                         "name": "id",
@@ -1866,7 +1187,7 @@
                     "TrainTicket"
                 ],
                 "summary": "Delete a TrainTicket",
-                "operationId": "1a5b7aba9aee36df41cc2d2c9409f4a1",
+                "operationId": "6d313361dbfebd8ec5693d4556997aa7",
                 "parameters": [
                     {
                         "name": "id",
@@ -1896,7 +1217,7 @@
                     "TrainTicket"
                 ],
                 "summary": "Restore a TrainTicket",
-                "operationId": "06924bc3c40b0b67e52a063b9fe2c71a",
+                "operationId": "ac43cdef2efc0ca1638ff3a5f382e60b",
                 "parameters": [
                     {
                         "name": "id",
@@ -1920,13 +1241,598 @@
                 ]
             }
         },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register a new user",
+                "operationId": "15a305cccb0e449b37cf83dd069da62e",
+                "parameters": [
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "description": "User firstName",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "description": "User lastName",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "User mobile",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User email",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "query",
+                        "description": "User password confirmation",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login user",
+                "operationId": "5af4433e29a0b65a26a6dde1e4cd7e46",
+                "parameters": [
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "User Mobile",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User login successfully"
+                    },
+                    "403": {
+                        "description": "Validation errors"
+                    },
+                    "401": {
+                        "description": "Login information is incorrect"
+                    }
+                }
+            }
+        },
+        "/api/auth/detail": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "detail user login",
+                "operationId": "cb93db4d4a2f32eaa6737a3003c8e541",
+                "responses": {
+                    "200": {
+                        "description": "User detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "user logout",
+                "operationId": "b5e2ebd9118be7f94ef12797bff40bb1",
+                "responses": {
+                    "200": {
+                        "description": "User Logout Successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/destroy": {
+            "delete": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Delete a User",
+                "operationId": "b1f939359c14c37ebfa49de7db6721d5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id User",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Delete successfully"
+                    }
+                }
+            }
+        },
+        "/api/auth/restore": {
+            "put": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "restore a User",
+                "operationId": "56574f31ab5e9d2116aaf9a3b0f89cb1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id User",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User restore successfully"
+                    }
+                }
+            }
+        },
+        "/api/City/All": {
+            "put": {
+                "tags": [
+                    "City Home"
+                ],
+                "summary": "All City",
+                "operationId": "f2255e116a6b061f99b95908e7f34933",
+                "responses": {
+                    "200": {
+                        "description": "User update successfully"
+                    }
+                }
+            }
+        },
+        "/api/orders": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "show a AirplaneTicket",
+                "operationId": "5a2247df6ecc2adb772257ee0a7af9ac",
+                "responses": {
+                    "200": {
+                        "description": "AirplaneTicket detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/passenger/Add": {
+            "post": {
+                "tags": [
+                    "Passenger Ticket"
+                ],
+                "summary": "Create|found Passengers",
+                "operationId": "825b98fc1f25899148ff0373da0a3d70",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "passengers": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "firstName": {
+                                                    "type": "string"
+                                                },
+                                                "lastName": {
+                                                    "type": "string"
+                                                },
+                                                "birthday": {
+                                                    "type": "string",
+                                                    "format": "date"
+                                                },
+                                                "nationalcode": {
+                                                    "type": "string"
+                                                },
+                                                "gender": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "passenger Create|Found successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/create": {
+            "get": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "Create 30 Fake Data in Passenger",
+                "operationId": "625f9b1c0a0b33319d3a25b6df97d78d",
+                "responses": {
+                    "200": {
+                        "description": "Create 30 Fake Data in Passenger"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/store": {
+            "post": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "Create a Passenger",
+                "operationId": "cc46bef236c64ed2666e1487258f71e4",
+                "parameters": [
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "description": "firstName Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "description": "lastName Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nationalcode",
+                        "in": "query",
+                        "description": "nationalcode Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "gender Passenger (male,femail)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "birthday",
+                        "in": "query",
+                        "description": "birthday Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "409": {
+                        "description": "TrainTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/show": {
+            "get": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "User Passengers",
+                "operationId": "228c0d3580aee592b1cc1ffaa953a7bf",
+                "responses": {
+                    "200": {
+                        "description": "get Passengers User successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/edit": {
+            "get": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "edit a Passenger",
+                "operationId": "1682d13e2bfa55880c9c2d40cc619212",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/update": {
+            "put": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "Update a Passenger",
+                "operationId": "874ed609955575f35a0f65c533a763b0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "description": "firstName Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "description": "lastName Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nationalcode",
+                        "in": "query",
+                        "description": "nationalcode Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "gender Passenger (male,femail)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "birthday",
+                        "in": "query",
+                        "description": "birthday Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "409": {
+                        "description": "TrainTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/destroy": {
+            "delete": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "Delete a Passenger",
+                "operationId": "236f2e76d4ef20deba183c403bc438c4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/Passenger/restore": {
+            "put": {
+                "tags": [
+                    "Passenger"
+                ],
+                "summary": "Restore a Passenger",
+                "operationId": "627c0c96cc9ff1d68a508c43348a310e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Passenger",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/AirplaneTicket/search": {
             "post": {
                 "tags": [
                     "Search"
                 ],
                 "summary": "Search AirplaneTickets",
-                "operationId": "c0ce5b7df9fa0345b7215f478205bcee",
+                "operationId": "9297bcb502740c64b629e83ac7b7d9de",
                 "parameters": [
                     {
                         "name": "arrivalTime",
@@ -1969,7 +1875,7 @@
                     "Ticket Home"
                 ],
                 "summary": "detail AirplaneTickets",
-                "operationId": "84e4913522bfd2c621cae89d0d11d990",
+                "operationId": "a43d4df23e74c7d48449473326494993",
                 "parameters": [
                     {
                         "name": "id",
@@ -1994,7 +1900,7 @@
                     "Ticket Home"
                 ],
                 "summary": "detail TrainTicket",
-                "operationId": "e87194074a0964bc57368f120a35c970",
+                "operationId": "44e48a26040536683e29fa348d59bc97",
                 "parameters": [
                     {
                         "name": "id",
@@ -2019,7 +1925,7 @@
                     "Search"
                 ],
                 "summary": "Search TrainTickets",
-                "operationId": "ec60962f420dafebc801f51240f2da4e",
+                "operationId": "e775798f44dd6752aca6732af8aa128d",
                 "parameters": [
                     {
                         "name": "arrivalTime",
@@ -2060,6 +1966,221 @@
                         "description": "Server Error"
                     }
                 }
+            }
+        },
+        "/api/User/ChangePassword": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "ChangePassword a User",
+                "operationId": "91cb51759732ef78268780c7471ad8fe",
+                "parameters": [
+                    {
+                        "name": "now_password",
+                        "in": "query",
+                        "description": "User Now password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "new_password",
+                        "in": "query",
+                        "description": "User New password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "new_password_confirmation",
+                        "in": "query",
+                        "description": "User New password confirmation",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User update successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/PersonalInformation": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "show a User",
+                "operationId": "488bdf58d864ddf63a3b51c6cc57675e",
+                "parameters": [
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "description": "firstName Passenger",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "description": "lastName Passenger",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nationalcode",
+                        "in": "query",
+                        "description": "nationalcode Passenger",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "gender Passenger (male,femail)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "birthday",
+                        "in": "query",
+                        "description": "birthday Passenger",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passenger detail successfully"
+                    },
+                    "409": {
+                        "description": "TrainTicket Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/BankInformation": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Add bankInformation a User",
+                "operationId": "c684a7af7a5535bd9ab0c994dea6d50f",
+                "parameters": [
+                    {
+                        "name": "shabanumber",
+                        "in": "query",
+                        "description": "User shabanumber",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cardnumber",
+                        "in": "query",
+                        "description": "User cardnumber",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add personalInformation successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/ChangeMobile": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Add mobile a User",
+                "operationId": "882a1eb812cdf2e252af2983144abf0b",
+                "parameters": [
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "User mobile",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add personalInformation successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/User/ChangeEmail": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Add email a User",
+                "operationId": "a081b511c0d59c45771bfdcba7f6e16a",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email mobile",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add personalInformation successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },
