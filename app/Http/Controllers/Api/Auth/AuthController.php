@@ -21,12 +21,19 @@ class AuthController extends Controller
      *     summary="Register a new user",
      *     tags={"Auth"},
      *     @OA\Parameter(
-     *         name="name",
+     *         name="firstName",
      *         in="query",
-     *         description="User name",
-     *         required=true,
+     *         description="User firstName",
+     *         required=false,
      *         @OA\Schema(type="string")
-     *     ),
+     *     ),    
+     *     @OA\Parameter(
+     *         name="lastName",
+     *         in="query",
+     *         description="User lastName",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),  
      *     @OA\Parameter(
      *         name="mobile",
      *         in="query",
@@ -72,7 +79,8 @@ class AuthController extends Controller
                 ], 403);
             }
             $user = User::create([
-                'name' => $request->name,
+                'firstName' => $request->firstName,
+                'lastName' => $request->lastName,
                 'mobile' => $request->mobile,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
@@ -186,8 +194,7 @@ class AuthController extends Controller
     public function userLogout(Request $request)
     {
         try {
-            $user = $request->usert();
-            $user->tokens()->delete();
+            $request->user()->tokens()->delete();
             return Response::json([
                 'status' => true,
                 'message' => 'Logout Successfully'
