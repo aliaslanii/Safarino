@@ -36,8 +36,38 @@ class AirportController extends Controller
         }
     }
     /**
-     * Upload an image.
-     *
+     * @OA\Get(
+     *     path="/api/admin/Airport/create",
+     *     summary="create Test Airport Data",
+     *     tags={"Airport"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="Count",
+     *         in="query",
+     *         description="Count Test Data => Airport",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ), 
+     *     @OA\Response(response="500", description="Server Error"),
+     *     @OA\Response(response="200", description="Airport create Test Data successfully"),
+     * )
+    */
+    public function create(Request $request)
+    { 
+        try {
+            $Airport = Airport::factory()->count($request->Count)->create();
+            return Response::json([
+                'status' => true,
+                'Airport' =>  $Airport
+            ]);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+    /**
      * @OA\Post(
      *      path="/api/admin/Airport/store",
      *      tags={"Airport"},

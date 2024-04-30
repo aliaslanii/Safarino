@@ -36,6 +36,37 @@ class RailcompanieController extends Controller
         }
     }
     /**
+     * @OA\Get(
+     *     path="/api/admin/Railcompanies/create",
+     *     summary="create Test Railcompanie Data",
+     *     tags={"Railcompanies"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="Count",
+     *         in="query",
+     *         description="Count Test Data => Railcompanie",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ), 
+     *     @OA\Response(response="200", description="Railcompanie create Test Data successfully"),
+     * )
+    */
+    public function Create(Request $request)
+    {
+        try {
+            $Railcompanie = Railcompanie::factory()->count($request->Count)->create();
+            return Response::json([
+                'status' => true,
+                'Railcompanie' =>  $Railcompanie
+            ]);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+    /**
      * @OA\Post(
      *      path="/api/admin/Railcompanies/store",
      *      tags={"Railcompanies"},

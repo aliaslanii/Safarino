@@ -36,16 +36,34 @@ class TrainTicketController extends Controller
     /**
      * @OA\Get(
      *     path="/api/admin/TrainTicket/create",
-     *     summary="All TrainTicket",
+     *     summary="create Test City Data",
      *     tags={"TrainTicket"},
      *     security={{"bearerAuth":{}}},
-     *     @OA\Response(response="200", description="TrainTicket detail successfully"),
+     *     @OA\Parameter(
+     *         name="Count",
+     *         in="query",
+     *         description="Count Test Data => TrainTicket",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ), 
      *     @OA\Response(response="500", description="Server Error"),
+     *     @OA\Response(response="200", description="TrainTicket create Test Data successfully"),
      * )
-     */
-    public function create()
+    */
+    public function create(Request $request)
     {
-        return TrainTicket::factory()->count(30)->create();
+        try {
+            $TrainTicket = TrainTicket::factory()->count($request->Count)->create();
+            return Response::json([
+                'status' => true,
+                'TrainTicket' =>  $TrainTicket
+            ]);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
     /**
      * @OA\Post(

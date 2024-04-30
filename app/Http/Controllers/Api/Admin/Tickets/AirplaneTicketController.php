@@ -32,22 +32,38 @@ class AirplaneTicketController extends Controller
             ], 500);
         }
     }
-
-    
     /**
      * @OA\Get(
      *     path="/api/admin/AirplaneTicket/create",
-     *     summary="All AirplaneTicket",
+     *     summary="create Test AirplaneTicket Data",
      *     tags={"AirplaneTicket"},
      *     security={{"bearerAuth":{}}},
-     *     @OA\Response(response="200", description="AirplaneTicket detail successfully"),
+     *     @OA\Parameter(
+     *         name="Count",
+     *         in="query",
+     *         description="Count Test Data => AirplaneTicket",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ), 
+     *     @OA\Response(response="500", description="Server Error"),
+     *     @OA\Response(response="200", description="AirplaneTicket create Test Data successfully"),
      * )
-     */
-    public function create()
-    {
-        return AirplaneTicket::factory()->count(30)->create();
+    */
+    public function create(Request $request)
+    { 
+        try {
+            $AirplaneTicket = AirplaneTicket::factory()->count(30)->create();
+            return Response::json([
+                'status' => true,
+                'AirplaneTicket' =>  $AirplaneTicket
+            ]);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
-
     /**
      * @OA\Post(
      *     path="/api/admin/AirplaneTicket/store",

@@ -24,6 +24,39 @@
                 ]
             }
         },
+        "/api/admin/Airport/create": {
+            "get": {
+                "tags": [
+                    "Airport"
+                ],
+                "summary": "create Test Airport Data",
+                "operationId": "54c6c3de9639065d3ce50f14600a87b0",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count Test Data => Airport",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "200": {
+                        "description": "Airport create Test Data successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/admin/Airport/store": {
             "post": {
                 "tags": [
@@ -246,6 +279,36 @@
                 ]
             }
         },
+        "/api/admin/City/create": {
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "create Test City Data",
+                "operationId": "4d4cb71b90e1ec0fffbf986606045819",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count Test Data => City",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "City create Test Data successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/admin/City/store": {
             "post": {
                 "tags": [
@@ -445,6 +508,39 @@
                 "responses": {
                     "200": {
                         "description": "Airline Show successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airline/create": {
+            "get": {
+                "tags": [
+                    "Airline"
+                ],
+                "summary": "create Test Airline Data",
+                "operationId": "6525dec781fb44472f78a4c6de27810f",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count Test Data => Airline",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "200": {
+                        "description": "Airline create Test Data successfully"
                     }
                 },
                 "security": [
@@ -703,6 +799,36 @@
                 "responses": {
                     "200": {
                         "description": "Railcompanies Show successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Railcompanies/create": {
+            "get": {
+                "tags": [
+                    "Railcompanies"
+                ],
+                "summary": "create Test Railcompanie Data",
+                "operationId": "b332610923fb4485ecc5010d9bd05060",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count Test Data => Railcompanie",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Railcompanie create Test Data successfully"
                     }
                 },
                 "security": [
@@ -1087,11 +1213,25 @@
                 "tags": [
                     "AirplaneTicket"
                 ],
-                "summary": "All AirplaneTicket",
+                "summary": "create Test AirplaneTicket Data",
                 "operationId": "b2a7f25140eb2e566d78554682339b8c",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count Test Data => AirplaneTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
+                    "500": {
+                        "description": "Server Error"
+                    },
                     "200": {
-                        "description": "AirplaneTicket detail successfully"
+                        "description": "AirplaneTicket create Test Data successfully"
                     }
                 },
                 "security": [
@@ -1581,14 +1721,25 @@
                 "tags": [
                     "TrainTicket"
                 ],
-                "summary": "All TrainTicket",
+                "summary": "create Test City Data",
                 "operationId": "5e9e1b21991e4def2d3298d8d80176dc",
+                "parameters": [
+                    {
+                        "name": "Count",
+                        "in": "query",
+                        "description": "Count Test Data => TrainTicket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
-                    "200": {
-                        "description": "TrainTicket detail successfully"
-                    },
                     "500": {
                         "description": "Server Error"
+                    },
+                    "200": {
+                        "description": "TrainTicket create Test Data successfully"
                     }
                 },
                 "security": [
