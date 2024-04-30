@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api\Admin\Setting;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SettingRequest;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
 {
@@ -102,6 +104,15 @@ class SettingController extends Controller
     public function update(Request $request)
     {
         try {
+            $SettingRequest = new SettingRequest();
+            $Validator = Validator::make($request->all(),$SettingRequest->rules());
+            if ($Validator->fails()) {
+                return Response::json([
+                    'status' => false,
+                    'message' => 'validation error',
+                    'errors' => $Validator->errors()
+                ], 409);
+            }
             $Setting = Setting::first();
             if ($Setting == null) {
                 $Setting = new Setting();
