@@ -13,6 +13,12 @@ Create Table:
 php artisan migrate
 ```
 
+## Usage
+Run Project :
+```
+php artisan serve
+```
+
 ## Code of Conduct
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
