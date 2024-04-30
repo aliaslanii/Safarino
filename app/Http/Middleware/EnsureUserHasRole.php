@@ -16,7 +16,7 @@ class EnsureUserHasRole
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        if($request->user()->role()->where('name',$role)->first())
+        if($request->user()->hasRole($role))
         {
             return $next($request);
         }else{
