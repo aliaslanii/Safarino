@@ -5,6 +5,228 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/admin/Airport/index": {
+            "get": {
+                "tags": [
+                    "Airport"
+                ],
+                "summary": "index Airport",
+                "operationId": "6ba69e7543e1feeccd2779c33bec2342",
+                "responses": {
+                    "200": {
+                        "description": "Airport Show successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airport/store": {
+            "post": {
+                "tags": [
+                    "Airport"
+                ],
+                "summary": "Store Airport",
+                "description": "Store a Airport",
+                "operationId": "0b001b1a2862c66e326a8ffb474c4fc6",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Airport",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airport Store successfully"
+                    },
+                    "409": {
+                        "description": "Airport Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airport/show": {
+            "get": {
+                "tags": [
+                    "Airport"
+                ],
+                "summary": "show a Airport",
+                "operationId": "1106dc2d70271c8ac605f46cf4fe58cd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Airport",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airport detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airport/edit": {
+            "get": {
+                "tags": [
+                    "Airport"
+                ],
+                "summary": "edit a Airport",
+                "operationId": "e55ac1b1a31c301caf0910387a77e4fa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Airport",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airport detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airport/update": {
+            "put": {
+                "tags": [
+                    "Airport"
+                ],
+                "summary": "Update Airports",
+                "description": "Store a Airports",
+                "operationId": "39588354402710a61fc320a617e9eaa5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Airport",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Airport",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airport Store successfully"
+                    },
+                    "409": {
+                        "description": "Airport Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airport/destroy": {
+            "delete": {
+                "tags": [
+                    "Airport"
+                ],
+                "summary": "Delete a Airport",
+                "operationId": "6c549b7bf5340d97a179a4df39fa5eb6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Airport",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airport detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airport/restore": {
+            "put": {
+                "tags": [
+                    "Airport"
+                ],
+                "summary": "Restore a Airport",
+                "operationId": "ca30c4747720a0e189fcec4ecce823db",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Airport",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airport detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/admin/City/index": {
             "get": {
                 "tags": [
@@ -204,6 +426,522 @@
                 "responses": {
                     "200": {
                         "description": "City detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airline/index": {
+            "get": {
+                "tags": [
+                    "Airline"
+                ],
+                "summary": "index Airline",
+                "operationId": "5e3398c71a25465bc7ac7ed22d0d432e",
+                "responses": {
+                    "200": {
+                        "description": "Airline Show successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airline/store": {
+            "post": {
+                "tags": [
+                    "Airline"
+                ],
+                "summary": "Store Airline",
+                "description": "Store a Airline",
+                "operationId": "d04bbdc95daaa0542944e15794c07636",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Airline",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Image file to upload",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "image Airline",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Airline Store successfully"
+                    },
+                    "409": {
+                        "description": "Airline Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airline/show": {
+            "get": {
+                "tags": [
+                    "Airline"
+                ],
+                "summary": "show a Airline",
+                "operationId": "4fe6b45b5a330c07560c1f26169387f3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Airline",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airline detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airline/edit": {
+            "get": {
+                "tags": [
+                    "Airline"
+                ],
+                "summary": "edit a Airline",
+                "operationId": "877fffc345a05afc1d409adf78c3dc7c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Airline",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airline detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airline/update": {
+            "post": {
+                "tags": [
+                    "Airline"
+                ],
+                "summary": "Update Airlines",
+                "description": "Store a Airlines",
+                "operationId": "dcc4bfd6a142a796fc45a02a57f6eb37",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Name Airline",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Airline",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Image file to upload",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "image Airline",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Airline Store successfully"
+                    },
+                    "409": {
+                        "description": "Airline Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airline/destroy": {
+            "delete": {
+                "tags": [
+                    "Airline"
+                ],
+                "summary": "Delete a Airline",
+                "operationId": "f2a5993e2a5919d9e4d940d966fc06a4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Airline",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airline detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Airline/restore": {
+            "put": {
+                "tags": [
+                    "Airline"
+                ],
+                "summary": "Restore a Airline",
+                "operationId": "864d379a28a426801168b186fc07827f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Airline",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airline detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Railcompanies/index": {
+            "get": {
+                "tags": [
+                    "Railcompanies"
+                ],
+                "summary": "index Railcompanies",
+                "operationId": "69fa7e07021dba44e718051ec4156bf6",
+                "responses": {
+                    "200": {
+                        "description": "Railcompanies Show successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Railcompanies/store": {
+            "post": {
+                "tags": [
+                    "Railcompanies"
+                ],
+                "summary": "Store Railcompanies",
+                "description": "Store a Railcompanies",
+                "operationId": "6d2fed9ff03efd69f9f7b26237d939bc",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Railcompanie",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Image file to upload",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "image Railcompanie",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Railcompanie Store successfully"
+                    },
+                    "409": {
+                        "description": "Railcompanie Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Railcompanies/show": {
+            "get": {
+                "tags": [
+                    "Railcompanies"
+                ],
+                "summary": "show a Railcompanie",
+                "operationId": "b4a0f688c41716fe7447837a426ea271",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Railcompanie",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Railcompanie detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Railcompanies/edit": {
+            "get": {
+                "tags": [
+                    "Railcompanies"
+                ],
+                "summary": "edit a Railcompanie",
+                "operationId": "68829616676a5e6ef6bf199813cab13e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Railcompanie",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Railcompanie detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Railcompanies/update": {
+            "post": {
+                "tags": [
+                    "Railcompanies"
+                ],
+                "summary": "Update Railcompanies",
+                "description": "Store a Railcompanies",
+                "operationId": "c6ead2bd13c95580b75d71a64a5a2757",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Name Railcompanie",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name Railcompanie",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Image file to upload",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "image Railcompanie",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Railcompanie Store successfully"
+                    },
+                    "409": {
+                        "description": "Railcompanie Validate Error"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Railcompanies/destroy": {
+            "delete": {
+                "tags": [
+                    "Railcompanies"
+                ],
+                "summary": "Delete a Railcompanie",
+                "operationId": "a0b8c3c82476ad0d0fb76d3b2ee41f85",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Railcompanie",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Railcompanie detail successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/Railcompanies/restore": {
+            "put": {
+                "tags": [
+                    "Railcompanies"
+                ],
+                "summary": "Restore a Railcompanie",
+                "operationId": "2ee6ca9930f631611bd3a8fb829b0433",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id Railcompanie",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Railcompanie detail successfully"
                     }
                 },
                 "security": [
@@ -599,7 +1337,7 @@
                         "description": "id AirplaneTicket",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
                         }
                     },
                     {
@@ -608,7 +1346,7 @@
                         "description": "adultPrice AirplaneTicket",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     },
                     {
