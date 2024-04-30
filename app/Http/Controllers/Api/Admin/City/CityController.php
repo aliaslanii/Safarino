@@ -23,7 +23,10 @@ class CityController extends Controller
     public function index()
     {
         try {
-            return City::all();
+            return Response::json([
+                'status' => true,
+                'City' =>  City::all()
+            ]);
         } catch (\Throwable $th) {
             return Response::json([
                 'status' => false,
