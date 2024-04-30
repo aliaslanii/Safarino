@@ -59,12 +59,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
-
     public function Passenger() : HasMany
     {
         return $this->hasMany(Passenger::class,'user_id');
     }
-
+    public function hasRole($role)
+    {
+        return $this->role()->where('name',$role)->first();
+    }
     public function wallet() : HasOne
     {
         return $this->hasOne(wallet::class,'user_id');
