@@ -14,6 +14,7 @@ php artisan serve
 Show Api Route Project : 
 
 > open browser
+
 > open this 
 ```
 localhost:8000/api/documentation
