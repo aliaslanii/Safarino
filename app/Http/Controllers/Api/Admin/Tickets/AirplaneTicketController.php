@@ -267,7 +267,7 @@ class AirplaneTicketController extends Controller
             ], 500);
         }
     }
-   /**
+    /**
      * @OA\Put(
      *     path="/api/admin/AirplaneTicket/update",
      *     summary="update a AirplaneTicket",
@@ -278,14 +278,14 @@ class AirplaneTicketController extends Controller
      *         in="query",
      *         description="id AirplaneTicket",
      *         required=true,
-     *         @OA\Schema(type="string")
+     *         @OA\Schema(type="integer")
      *     ), 
      *     @OA\Parameter(
      *         name="adultPrice",
      *         in="query",
      *         description="adultPrice AirplaneTicket",
      *         required=true,
-     *         @OA\Schema(type="integer")
+     *         @OA\Schema(type="string")
      *     ),  
      *     @OA\Parameter(
      *         name="arrivalTime",
@@ -429,7 +429,6 @@ class AirplaneTicketController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
-       
     }
 
     /**
@@ -464,7 +463,7 @@ class AirplaneTicketController extends Controller
             ], 500);
         }
     }
-     /**
+    /**
      * @OA\Put(
      *     path="/api/admin/AirplaneTicket/restore",
      *     summary="Restore a AirplaneTicket",
