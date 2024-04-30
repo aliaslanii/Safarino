@@ -11,9 +11,10 @@ php artisan serve
 ```
 
 ## Api Docs 
-Show Api Route Project :
-1- open browser
-2- open this :
+Show Api Route Project : 
+
+> open browser
+> open this 
 ```
 localhost:8000/api/documentation
 ```
