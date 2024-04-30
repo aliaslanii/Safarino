@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Airline;
 use App\Models\Airlines;
 use App\Models\Airport;
 use App\Models\City;
@@ -38,7 +39,7 @@ class DatabaseSeeder extends Seeder
         $wallet->status = true;
         $wallet->save();
         City::factory(30)->create();
-        Airlines::factory(30)->create();
+        Airline::factory(30)->create();
         Airport::factory(30)->create();
         Railcompanie::factory(30)->create();
         Passenger::factory(30)->create();
