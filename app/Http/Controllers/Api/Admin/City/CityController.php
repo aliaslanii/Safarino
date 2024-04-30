@@ -35,6 +35,37 @@ class CityController extends Controller
         }
     }
     /**
+     * @OA\Get(
+     *     path="/api/admin/City/create",
+     *     summary="create Test City Data",
+     *     tags={"City"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="Count",
+     *         in="query",
+     *         description="Count Test Data => City",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ), 
+     *     @OA\Response(response="200", description="City create Test Data successfully"),
+     * )
+    */
+    public function create(Request $request)
+    {
+        try {
+            $City = City::factory()->count($request->Count)->create();
+            return Response::json([
+                'status' => true,
+                'City' =>  $City
+            ]);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+    /**
      * @OA\Post(
      *     path="/api/admin/City/store",
      *     summary="Create a City",

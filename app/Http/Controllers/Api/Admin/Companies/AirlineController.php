@@ -37,8 +37,38 @@ class AirlineController extends Controller
         }
     }
     /**
-     * Upload an image.
-     *
+     * @OA\Get(
+     *     path="/api/admin/Airline/create",
+     *     summary="create Test Airline Data",
+     *     tags={"Airline"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="Count",
+     *         in="query",
+     *         description="Count Test Data => Airline",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ), 
+     *     @OA\Response(response="500", description="Server Error"),
+     *     @OA\Response(response="200", description="Airline create Test Data successfully"),
+     * )
+    */
+    public function create(Request $request)
+    { 
+        try {
+            $Airline = Airline::factory()->count($request->Count)->create();
+            return Response::json([
+                'status' => true,
+                'Airline' =>  $Airline
+            ]);
+        } catch (\Throwable $th) {
+            return Response::json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+    /**
      * @OA\Post(
      *      path="/api/admin/Airline/store",
      *      tags={"Airline"},
