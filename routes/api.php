@@ -47,11 +47,11 @@ Route::prefix('Passenger')->middleware(['auth:sanctum'])->group(function(){
 Route::prefix('wallet')->middleware(['auth:sanctum'])->group(function(){
     Route::post('chargewallet', [WalletController::class,'chargewallet']);
 });
-Route::prefix('orders')->middleware(['auth:sanctum'])->group(function(){
+Route::prefix('orders')->group(function(){
     Route::get('', [OrderController::class,'orders'])->name('orders');
     // این تست برای قسمت درگاه پرداخت بود  
     Route::get('ticket', [OrderController::class,'ticketCreate'])->name('ticketCreate');
-    Route::post('Payment', [OrderController::class,'payMent'])->name('payMent');
+    Route::get('Payment', [OrderController::class,'payMent'])->name('payMent');
     Route::post('Paydone', [OrderController::class,'payDone'])->name('payDone');
     
 });
