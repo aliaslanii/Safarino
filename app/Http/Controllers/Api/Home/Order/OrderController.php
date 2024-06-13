@@ -10,6 +10,7 @@ use App\Models\TrainTicket;
 use App\Models\Transaction;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Response;
 
@@ -115,46 +116,44 @@ class OrderController extends Controller
     public function payMent(Request $request)
     {
         try {
-            // $ordernumber = random_int(1403, 99999999);
-            // $order = new Order();
-            // $order->user_id = 1;
-            // // $order->user_id = $request->user()->id;
-            // $order->mobile = "09227659746";
-            // // $order->mobile = $request->user()->mobile;
-            // $order->ordernumber = $ordernumber;
-            // $order->Amount = $request->Amount;
-            // $order->is_payed = 0;
-            // $order->Status = "Expectation";
-            // $order->type = $request->type;
-            // if ($request->type == "Train") {
-            //     $Ticket = TrainTicket::findOrfail($request->tickets_id);
-            //     $Ticket->passenger()->syncWithoutDetaching($request->Passengers);
-            //     $order->trainticket_id = $request->tickets_id;
-            // } elseif ($request->type == "Airplane") {
-            //     $Ticket = AirplaneTicket::findOrfail($request->tickets_id);
-            //     $Ticket->passenger()->syncWithoutDetaching($request->Passengers);
-            //     $order->airplanetickets_id = $Ticket->id;
-            // }
-            // $order->save();
+            $ordernumber = random_int(1403, 99999999);
+            $order = new Order();
+            $order->user_id = $request->user()->id;
+            $order->mobile = $request->user()->mobile;
+            $order->ordernumber = $ordernumber;
+            $order->Amount = $request->Amount;
+            $order->is_payed = 0;
+            $order->Status = "Expectation";
+            $order->type = $request->type;
+            if ($request->type == "Train") {
+                $Ticket = TrainTicket::findOrfail($request->tickets_id);
+                $Ticket->passenger()->syncWithoutDetaching($request->Passengers);
+                $order->trainticket_id = $request->tickets_id;
+            } elseif ($request->type == "Airplane") {
+                $Ticket = AirplaneTicket::findOrfail($request->tickets_id);
+                $Ticket->passenger()->syncWithoutDetaching($request->Passengers);
+                $order->airplanetickets_id = $Ticket->id;
+            }
+            $order->save();
 
             $url = 'https://sandbox.banktest.ir/saman/sep.shaparak.ir/OnlinePG/OnlinePG?';
             $data = [
-                'Username' => "user134755515",
-                "Password" => 52846752,
-                "action" => "token",
-                "Amount" => round(random_int(1000000, 99999999)),
-                "Wage" => 2,
-                "AffectiveAmount" => "134755516",
-                "TerminalId" => 134755516,
-                "ResNum" => random_int(1403, 99999999),
-                "CellNumber" => "09227659746",
-                "RedirectURL" => "http://localhost:8000/api/orders/Paydone"
+                'Username' => env('BANK_USERNAME', 'default_user'),
+                'Password' => env('BANK_PASSWORD', 'default_pass'),
+                'action' => 'token',
+                'Amount' => $order->total_price,
+                'Wage' => 2,
+                'AffectiveAmount' => '134755516',
+                'TerminalId' => env('BANK_TERMINALID','default_terminalid'),
+                'ResNum' => $ordernumber,
+                'CellNumber' => Auth::user()->mobile,
+                'RedirectURL' => url('/api/orders/Paydone')
             ];
             $response = Http::post($url, $data);
-            if ($response->successful('https://sandbox.banktest.ir/saman/sep.shaparak.ir/OnlinePG/OnlinePG?')) {
+            if ($response->successful()) {
                 $jsonResponse = $response->json();
                 $token = $jsonResponse['token'];
-                return redirect('https://sandbox.banktest.ir/saman/sep.shaparak.ir/OnlinePG/SendToken?token='.$token);
+                return redirect('https://sandbox.banktest.ir/saman/sep.shaparak.ir/OnlinePG/SendToken?token=' . $token);
             } else {
                 return Response::json([
                     'status' => false,
